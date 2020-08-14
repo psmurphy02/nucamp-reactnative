@@ -5,7 +5,7 @@ import { CAMPSITES } from '../shared/campsites';
 import { COMMENTS } from '../shared/comments';
 
 
-function RenderCampsite({props}) {
+function RenderCampsite(props) {
 
     const {campsite} = props;
 
