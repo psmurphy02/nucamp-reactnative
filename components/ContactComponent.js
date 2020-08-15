@@ -1,12 +1,24 @@
 import React, { Component } from "react";
-import { ScrollView, Text } from "react-native";
-import { Card } from "react-native-elements";
+import { ScrollView, Text, Button } from "react-native";
+import { Card, Avatar, Badge } from "react-native-elements";
 
 export default class Contact extends Component {
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+             badgeLike: 1
+        }
+    }
+    
 
     static navigationOptions = {
         title: 'Contact Us'
     }
+
+    addLike() {
+        this.setState({badgeLike: this.state.badgeLike+1})
+    };
 
   render() {
     return (
@@ -14,7 +26,20 @@ export default class Contact extends Component {
         <Card 
         title="Contact Information"
         wrapperStyle={{margin: 20}}>
-            <Text style={{marginBottom: 10}}>
+        <Avatar size='medium' rounded icon={{ name: 'home' }} />
+        <Badge
+            status="error"
+            value={this.state.badgeLike}
+            containerStyle={{ top: -50, right: 105 }}
+        />
+        <Button 
+            title='Press to Like' 
+                onPress={() => {
+                    this.addLike();
+                }}
+        />
+    
+            <Text style={{marginTop: 20, marginBottom: 10}}>
                 {"1 Nucamp Way"}
                 {"\nSeattle, WA 98001"}
                 {"\nU.S.A."}
